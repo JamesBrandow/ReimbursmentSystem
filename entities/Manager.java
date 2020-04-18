@@ -10,6 +10,7 @@ public class Manager {
 	private String password;
 	
 	private List<Reimbursment> reimburstment = new ArrayList<Reimbursment>();
+	private List<Employee> employee = new ArrayList<Employee>();
 	
 	public Manager() {
 		
@@ -52,6 +53,14 @@ public class Manager {
 
 	public void setReimburstment(List<Reimbursment> reimburstment) {
 		this.reimburstment = reimburstment;
+	}
+
+	public List<Employee> getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(List<Employee> employee) {
+		this.employee = employee;
 	}
 
 	@Override

@@ -8,6 +8,7 @@ public class Employee {
 	private int empID;
 	private String username;
 	private String password;
+	private int manID;
 	
 	private List<Reimbursment> reimburstment = new ArrayList<Reimbursment>();
 	
@@ -54,9 +55,19 @@ public class Employee {
 		this.reimburstment = reimburstment;
 	}
 
+	public int getManID() {
+		return manID;
+	}
+
+	public void setManID(int manID) {
+		this.manID = manID;
+	}
+
 	@Override
 	public String toString() {
-		return "Employee [empID=" + empID + ", username=" + username + ", password=" + password + "]";
-	}	
-	
+		return "Employee [empID=" + empID + ", username=" + username + ", password=" + password + ", manID=" + manID
+				+ ", reimburstment=" + reimburstment + "]";
+	}
+
+
 }
