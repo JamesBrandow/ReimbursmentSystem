@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    
+    <h1>Employee Login</h1>
+    
+    <input id="usernameInput" type="text" placeholder="username">
+    <input id="passwordInput" type="password" placeholder="password">
+    <button id="employeeLoginBtn">Login</button>
+    
+    
+</body>
+
+<script>
+
+    document.getElementById("employeeLoginBtn").addEventListener("click", employeeLogin)
+    
+    async function employeeLogin(){
+        let username = document.getElementById("usernameInput").value;
+        let password = document.getElementById("passwordInput").value;
+        let httpResponse = await fetch(`http://localhost:8080/ExpenceRiembursment/EmployeeServlet`);
+        window.location.href = `http://localhost:8080/ExpenceRiembursment/employeepage.html`;
+    }
+
+</script>
+
+</html>
