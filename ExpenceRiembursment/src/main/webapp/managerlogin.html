@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+<body>
+    <div class="center-screen">
+        <table id="bordering">
+            <td>
+                <form action="ManagerServlet">
+                    <div class="element">
+                        <h1 class="element1">Manager Login</h1>
+                    </div>
+                    <input id="usernameInput" type="text" placeholder="username" name="username">
+                    <input id="passwordInput" type="password" placeholder="password" name="password">
+                    <button id="managerLoginBtn" class="button1">Login</button>
+                </form>
+            </td>
+        </table>
+    </div>
+</body>
+
+<script>
+
+    document.getElementById("managerLoginBtn").addEventListener("click", managerLogin)
+   
+    async function managerLogin(){
+        let username = document.getElementById("usernameInput").value;
+        let password = document.getElementById("passwordInput").value;
+        let httpResponse = await fetch(`http://localhost:8080/ExpenceRiembursment/ManagerServlet?username=${username}&password=${password}`);
+        
+
+    }
+        
+</script>
+
+</html>

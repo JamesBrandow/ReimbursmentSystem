@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link rel="stylesheet" href="style.css">        
+    </head>
+
+<body>
+<div>
+    <table id="bordering">
+        <tr>
+            <th>
+                <h1 class="element1">Welcome</h1>
+            </th>
+            <!-- <th>
+                <h2 class="element1">User information</h2>
+            </th> -->
+            <th>
+                <img src="https://i.pinimg.com/originals/82/72/58/82725898e7b6dbb8634c8e26d7a4e900.jpg" alt="wolf" style="width: 100px;height: 100px; right: 0;" >
+            </th>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <h3 class="element1">Reimbursements</h3>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="6">
+                <button id="allReimbursements" class="button2">Get all Reimbusements</button>
+                <button id="completedReimbursements" class="button2">Get Completed Reimbusements</button>
+                <button id="pendingReimbursements" class="button2">Get Pending Reimbusements</button>
+                <button id="approvedReimbursements" class="button2">Get Approved Reimbusements</button>
+                <button id="deniedReimbursements" class="button2">Get Denied Reimbusements</button>
+                <button id="logout" class="button2">Logout</button>
+            </td>
+            <td colspan="2">
+                <table id="reimbursementTable">
+                    <thead>
+                        <tr>
+                            <th class="element1">Reimbursement ID</th>
+                            <th class="element1">Employee ID</th>
+                            <th class="element1">Desctription</th>
+                            <th class="element1">Amount</th>
+                            <th class="element1">Status</th>
+                            <th class="element1">Approve/Deny</th>
+                        </tr>
+                    </thead>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+
+<script>
+
+    document.getElementById("allReimbursements").addEventListener("click", getAllReimbursements);
+    document.getElementById("completedReimbursements").addEventListener("click", getCompletedReimbursements);
+    document.getElementById("pendingReimbursements").addEventListener("click", getPendingReimbursements);
+    document.getElementById("approvedReimbursements").addEventListener("click", getApprovedReimbursements);
+    document.getElementById("deniedReimbursements").addEventListener("click", getDeniedReimbursements);
+
+    document.getElementById("logout").onclick = function() {
+    location.href = "http://localhost:8080/ExpenceRiembursment/index.html"
+}        
+
+    async function getAllReimbursements() {
+
+        let httpResponse = await fetch("http://localhost:8080/ExpenceRiembursment/api/reimbursments");
+        let reimbursements = await httpResponse.json();
+        let tableData = document.getElementById("reimbursementTable");
+        console.log(tableData)
+
+        tableData.innerHTML = `<thead><tr><th class="element1">Reimbursement ID</th>
+            <th class="element1">Employee ID</th>
+            <th class="element1">Desctription</th>
+            <th class="element1">Amount</th>
+            <th class="element1">Status</th>
+            <th class="element1">Approve/Deny</th></tr></thead>`
+
+        for (reimbursement of reimbursements) {
+            tableData.innerHTML = tableData.innerHTML + `<tr><td class="element1">${reimbursement.remid} </td> 
+        <td class="element1">${reimbursement.empID} </td> 
+        <td class="element1">${reimbursement.description} </td> 
+        <td class="element1">${reimbursement.amount} </td> 
+        <td class="element1">${reimbursement.status} </td></tr>`;
+        }
+    }
+
+    async function getCompletedReimbursements() {
+        let httpResponse = await fetch("http://localhost:8080/ExpenceRiembursment/api/completedreimbursments");
+        let reimbursements = await httpResponse.json();
+        let tableData = document.getElementById("reimbursementTable");
+        console.log(tableData)
+
+        tableData.innerHTML = `<thead><tr><th class="element1">Reimbursement ID</th>
+            <th class="element1">Employee ID</th>
+            <th class="element1">Desctription</th>
+            <th class="element1">Amount</th>
+            <th class="element1">Status</th>
+            <th class="element1">Approve/Deny</th></tr></thead>`
+
+        for (reimbursement of reimbursements) {
+            tableData.innerHTML = tableData.innerHTML + `<tr><td class="element1">${reimbursement.remid} </td> 
+        <td class="element1">${reimbursement.empID} </td> 
+        <td class="element1">${reimbursement.description} </td> 
+        <td class="element1">${reimbursement.amount} </td> 
+        <td class="element1">${reimbursement.status} </td></tr>`;
+        }
+    }
+
+    async function getPendingReimbursements() {
+
+        let httpResponse = await fetch("http://localhost:8080/ExpenceRiembursment/api/pendingreimbursments");
+        let reimbursements = await httpResponse.json();
+        let tableData = document.getElementById("reimbursementTable");
+
+        tableData.innerHTML = `<thead><tr><th class="element1">Reimbursement ID</th>
+            <th class="element1">Employee ID</th>
+            <th class="element1">Desctription</th>
+            <th class="element1">Amount</th>
+            <th class="element1">Status</th>
+            <th class="element1">Approve/Deny</th></tr></thead>`
+
+        for (reimbursement of reimbursements) {
+            tableData.innerHTML = tableData.innerHTML +`<tr><td class="element1">${reimbursement.remid} </td> 
+        <td class="element1">${reimbursement.empID} </td> 
+        <td class="element1">${reimbursement.description} </td> 
+        <td class="element1">${reimbursement.amount} </td> 
+        <td class="element1">${reimbursement.status} </td>
+        <td><button rid=${reimbursement.remid} 
+        eID=${reimbursement.empID} 
+        desc=${reimbursement.description} 
+        amt=${reimbursement.amount} 
+        ststus=${reimbursement.status} 
+        onclick="approve(this)" class="button1">Approve</button>
+        <button rid=${reimbursement.remid} 
+        eID=${reimbursement.empID} 
+        desc=${reimbursement.description} 
+        amt=${reimbursement.amount} 
+        ststus=${reimbursement.status} 
+        onclick="deny(this)"" class="button1">Deny</button></td></tr>`;
+        }
+    }
+
+    async function getApprovedReimbursements() {
+
+        let httpResponse = await fetch("http://localhost:8080/ExpenceRiembursment/api/approvedreimbursments");
+        let reimbursements = await httpResponse.json();
+        let tableData = document.getElementById("reimbursementTable");
+
+        tableData.innerHTML = `<thead><tr><th class="element1">Reimbursement ID</th>
+            <th class="element1">Employee ID</th>
+            <th class="element1">Desctription</th>
+            <th class="element1">Amount</th>
+            <th class="element1">Status</th>
+            <th class="element1">Approve/Deny</th></tr></thead>`
+
+        for (reimbursement of reimbursements) {
+            tableData.innerHTML = tableData.innerHTML + `<tr><td class="element1">${reimbursement.remid} </td> 
+        <td class="element1">${reimbursement.empID} </td> 
+        <td class="element1">${reimbursement.description} </td> 
+        <td class="element1">${reimbursement.amount} </td> 
+        <td class="element1">${reimbursement.status} </td></tr>`;
+        }
+    }
+
+    async function getDeniedReimbursements() {
+
+        let httpResponse = await fetch("http://localhost:8080/ExpenceRiembursment/api/deniedreimbursments");
+        let reimbursements = await httpResponse.json();
+        let tableData = document.getElementById("reimbursementTable");
+
+        tableData.innerHTML = `<thead><tr><th class="element1">Reimbursement ID</th>
+            <th class="element1">Employee ID</th>
+            <th class="element1">Desctription</th>
+            <th class="element1">Amount</th>
+            <th class="element1">Status</th>
+            <th class="element1">Approve/Deny</th></tr></thead>`
+
+        for (reimbursement of reimbursements) {
+            tableData.innerHTML = tableData.innerHTML + `<tr><td class="element1">${reimbursement.remid} </td> 
+        <td class="element1">${reimbursement.empID} </td> 
+        <td class="element1">${reimbursement.description} </td> 
+        <td class="element1">${reimbursement.amount} </td> 
+        <td class="element1">${reimbursement.status} </td></tr>`;
+        }
+    }
+
+    async function approve(element) {
+
+        let reimbursment = {}
+        reimbursment.remid = element.getAttribute("rid")
+        reimbursment.empID = element.getAttribute("eID")
+        reimbursment.description = element.getAttribute("desc")
+        reimbursment.amount = Number.parseInt(element.getAttribute("amt"))
+        reimbursment.status = "approved"
+
+        console.log(reimbursment)
+        console.log(element)
+        let settings = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(reimbursment)
+        }
+
+        let httpResponse = await fetch("http://localhost:8080/ExpenceRiembursment/api/approvereimbursments", settings);
+
+        console.log(httpResponse)
+
+    }
+
+    async function deny(element) {
+
+        let reimbursment = {}
+        reimbursment.remid = element.getAttribute("rid")
+        reimbursment.empID = element.getAttribute("eID")
+        reimbursment.description = element.getAttribute("desc")
+        reimbursment.amount = Number.parseInt(element.getAttribute("amt"))
+        reimbursment.status = "denied"
+
+        console.log(reimbursment)
+        console.log(element)
+        let settings = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(reimbursment)
+        }
+
+        let httpResponse = await fetch("http://localhost:8080/ExpenceRiembursment/api/denyreimbursments", settings);
+
+        console.log(httpResponse)
+
+    }
+
+</script>
+
+</html>

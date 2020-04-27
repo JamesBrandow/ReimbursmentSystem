@@ -1,0 +1,101 @@
+
+.center-screen{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+}
+
+.button{
+    background-image: url(https://wallpaperaccess.com/full/88167.jpg);
+    border-color: 5px lightslategrey;
+    color: whitesmoke;
+    height: 75px;
+    width: 175px;
+    text-align: center;
+    font-size: medium;
+    font-family: witcher;
+}
+
+.button1{
+    background-image: url(https://wallpaperaccess.com/full/88167.jpg);
+    border-color: 5px lightslategrey;
+    color: whitesmoke;
+    height: 25px;
+    width: 75px;
+    text-align: center;
+    font-size: medium;
+    font-family: witcher;
+}
+
+.button2{
+    background-image: url(https://wallpaperaccess.com/full/88167.jpg);
+    border-color: 5px lightslategrey;
+    color: whitesmoke;
+    height: 50px;
+    width: 125px;
+    text-align: center;
+    font-size: small;
+    font-family: witcher;
+    display: block;
+}
+
+h1 {
+    color: black;
+}
+
+.element {
+	text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+}
+
+.element1 {
+	text-shadow:
+		-1px -1px 0 whitesmoke,
+		1px -1px 0 whitesmoke,
+		-1px 1px 0 whitesmoke,
+		1px 1px 0 whitesmoke;
+}
+
+table {
+    background-image: url(https://previews.123rf.com/images/karidesign/karidesign1605/karidesign160500026/56077700-gray-stone-background.jpg);
+}
+
+th, td {
+    text-align: center;
+    border-bottom: 3px solid black;
+    border-left: 3px solid black;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+th{
+    padding-top: 5px;
+    background-image: url(https://wallpaperaccess.com/full/88167.jpg);
+}
+
+@font-face{
+    font-family: witcher;
+    src:url(Thewitcher-jnOj.ttf)
+}
+
+div {
+    font-family: witcher;
+}
+
+#bordering {
+    border: 10px solid transparent;
+    padding: 15px;
+    border-image: url(https://us.123rf.com/450wm/pogrebkov/pogrebkov1804/pogrebkov180400052/100143207-black-cracked-brick-tiles-wall-texture-dark-old-rough-brickwork-background.jpg?ver=6) 30 round;
+}
+
+body {
+    background: url(https://vignette.wikia.nocookie.net/witcher/images/e/ec/Tw3_Kaer_Morhen_valley.jpg/revision/latest?cb=20160911152956);
+    background-repeat: inherit;
+    background-size: auto;
+}
