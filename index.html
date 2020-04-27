@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="center-screen">
+        <table id="bordering">
+            <td>
+                <div class="element">
+                    <h1 class="element1">Witcher Reimbursement Login</h1>
+                </div>
+                <button id="managerLoginBtn" class="button">Manager Login</button>
+                <button id="employeeLoginBtn" class="button">Employee Login</button>
+            </td>
+        </table>
+    </div>
+</body>
+
+<script>
+
+    document.getElementById("managerLoginBtn").addEventListener("click", managerLogin)
+    document.getElementById("employeeLoginBtn").addEventListener("click", employeeLogin)
+    
+
+     async function managerLogin(){
+        window.location.href = `http://localhost:8080/ExpenceRiembursment/managerlogin.html`;
+    }
+        
+    async function employeeLogin(){
+        window.location.href = `http://localhost:8080/ExpenceRiembursment/employeelogin.html`;
+    }
+
+</script>
+
+</html>
